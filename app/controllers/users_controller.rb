@@ -42,4 +42,18 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+
+  #  自分をフォロ-しているユーザー
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user
+    #binding.pry
+  end
+
+  # 自分がフォローしているユーザー
+  def followers
+    user = User.find(params[:id])
+    @users = user.follower_user
+    #binding.pry
+  end
 end
